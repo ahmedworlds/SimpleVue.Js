@@ -9,8 +9,6 @@ const msg = ref('Text')
 
 <template>
 
-<input placeholder="text please" v-model="msg" />
-
   <MyComponent title="Welcome" sub="ahmed" />
   <MyComponent title="Features" sub="toto"/>
   <MyComponent :sub="msg" title="msg" />
