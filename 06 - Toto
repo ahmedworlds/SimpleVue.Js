@@ -1,0 +1,43 @@
+<script setup>
+import { ref } from 'vue'
+
+
+const FieldTaskName = ref('')
+const list = ref([
+  {id:0, name:'New task', done: false}
+])
+
+const addTodo = () => {
+  list.value.push({
+    id: Date.now(),
+    name: FieldTaskName.value,
+    done: false
+})
+  FieldTaskName.value = ''
+}
+
+const delTodo = (Task) => {
+  list.value = list.value.filter(l => l != Task)
+}
+
+</script>
+
+
+
+
+<template>
+
+
+<h1>Todo Tasks</h1>
+New task: <input v-model="FieldTaskName" @keyup.enter="addTodo" /> (Press enter)
+
+<h3>Tasks</h3>
+<ul>
+  <div v-for="Task in list">
+    <input type="checkbox" v-model="Task.done" />  
+    {{ Task.name }} - {{Task.done == true ? '✔️':'❌' }}
+    <button @click="delTodo(Task)" >Del</button>
+  </div>
+</ul>
+
+</template>
