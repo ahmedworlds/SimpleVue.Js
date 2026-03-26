@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 
 const APIData = ref([])
 onMounted(async () => {
+  await new Promise(resolve => setTimeout(resolve, 2000)) // Fake waiting for API
   const APIDataCall = await fetch('https://jsonplaceholder.typicode.com/users')
   APIData.value = await APIDataCall.json()
 })
